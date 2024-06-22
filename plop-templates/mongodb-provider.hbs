@@ -1,0 +1,14 @@
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { {{pascalCase name}}Schema } from './{{name}}.schema';
+
+@Module({
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/{{name}}_service', {
+      user: '{{name}}_user',
+      pass: 'password',
+    }),
+    MongooseModule.forFeature([{ name: '{{pascalCase name}}', schema: {{pascalCase name}}Schema }]),
+  ],
+})
+export class DatabaseModule {}
